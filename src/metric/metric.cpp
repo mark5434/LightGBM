@@ -3,6 +3,8 @@
 #include "binary_metric.hpp"
 #include "rank_metric.hpp"
 #include "map_metric.hpp"
+#include "topavg_metric.hpp"
+#include "topavgdiff_metric.hpp"
 #include "multiclass_metric.hpp"
 #include "xentropy_metric.hpp"
 
@@ -51,6 +53,10 @@ Metric* Metric::CreateMetric(const std::string& type, const Config& config) {
     return new GammaDevianceMetric(config);
   } else if (type == std::string("tweedie")) {
     return new TweedieMetric(config);
+  } else if (type == std::string("topavg")) {
+    return new TopavgMetric(config);
+  } else if (type == std::string("topavgdiff")) {
+    return new TopavgdiffMetric(config);
   }
   return nullptr;
 }
